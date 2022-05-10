@@ -1,12 +1,12 @@
 
 ## Yêu cầu hệ điều hành Ubuntu và ngôn ngữ lập trình Python<br>
 ## Video tĩnh
-**Bước 1:** Cài đặt [face_lib](https://github.com/a-akram-98/face_lib?ref=pythonawesome.com)
-**Bước 2:** Thay đổi đường dẫn tới video và ảnh xác minh rồi chạy file. 
+**Bước 1:** Cài đặt [face_lib](https://github.com/a-akram-98/face_lib?ref=pythonawesome.com)<br>
+**Bước 2:** Thay đổi đường dẫn tới video và ảnh xác minh rồi chạy file. <br>
 ## Hướng dẫn chạy (streaming)
 **Bước 1:** Cài đặt **v4l2loopback** (hướng dẫn cài đặt và sử dụng [v4l2loopback](https://github.com/umlaeute/v4l2loopback))<br>
 
-**Bước 2:** Cài đặt [face_lib](https://github.com/a-akram-98/face_lib?ref=pythonawesome.com) và các thư viện liên quan khác trong phần khai báo thư viện trong face_detection.py và fake recognition.py.<br>
+**Bước 2:** Cài đặt [face_lib](https://github.com/a-akram-98/face_lib?ref=pythonawesome.com) và các thư viện liên quan khác trong phần khai báo thư viện trong  recognition.py.<br>
 
 **Bước 3:** Tạo các host camera ảo trên thiết bị bằng câu lệnh<br>
 
