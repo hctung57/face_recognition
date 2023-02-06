@@ -1,9 +1,8 @@
-from face_lib import face_lib
-FL = face_lib()
 import cv2
 import time
-import subprocess
 import configargparse
+from face_lib import face_lib
+FL = face_lib()
 
 #parser func
 def parser_args():
@@ -16,7 +15,7 @@ def parser_args():
 #calculate average fps after exit 
 def average_fps(arr):
     sum = 0
-    count = 0
+    count = 1
     for fps in arr:
         sum += fps
         count += 1
@@ -28,22 +27,21 @@ if __name__ == "__main__":
     args = parser_args()
     source_rtmp = args.source_rtmp
 
-    #URL destination streaming (nginx server)
-    rtmp_url = "rtmp://localhost/live/stream"
 
     #Source Streaming path
-    path = f"rtmp://{source_rtmp}/live/stream"
+    # path = f"rtmp://{source_rtmp}/live/stream"
+    path = "0"
     
     #setup
     font = cv2.FONT_HERSHEY_DUPLEX
     #source video
-    cap = cv2.VideoCapture(path)
+    cap = cv2.VideoCapture(0)
     WIDTH_INPUT_STREAMING = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     HEIGHT_INPUT_STREAMING = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     FPS_INPUT_STREAMING = int(cap.get(cv2.CAP_PROP_FPS))
 
-    REFERENCE_IMAGE = cv2.imread("image.jpg")
-    SUM_FRAME_HANDLE = 0
+    REFERENCE_IMAGE = cv2.imread("1.jpg")
+    SUM_FRAME_HANDLE = 1
     SUM_FRAME_HAVE_TRUE_OUTPUT = 0
 
     # Variables to calculate fps
@@ -62,11 +60,12 @@ if __name__ == "__main__":
                 notify = 'True'
                 SUM_FRAME_HAVE_TRUE_OUTPUT += 1
             print("Recognition: {}".format(notify), end="\r")
-            # cv2.putText(frame,notify,(25,25), font, 1.0, (255,255,255), 1)
+            #cv2.putText(frame,notify,(25,25), font, 1.0, (255,255,255), 1)
             #fps calculate
             SUM_FRAME_HANDLE += 1
             frame_count += 1
             td = time.monotonic() - t0
+            cv2.imshow("aa",frame)
             if td > print_fps_period:
                 current_fps = frame_count / td
                 arr += [current_fps]
